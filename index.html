@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Link - Software Engineer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Roboto Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom styles untuk tema IT/Hacker */
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #0D1117; /* Warna latar belakang GitHub dark mode */
+            background-image:
+                linear-gradient(rgba(13, 17, 23, 0.95), rgba(13, 17, 23, 0.95)),
+                url('https://www.transparenttextures.com/patterns/cubes.png');
+        }
+
+        .card-container {
+            background-color: rgba(31, 41, 55, 0.3); /* Latar belakang semi-transparan */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+        }
+
+        .link-button {
+            border-color: #374151; /* Warna border tombol */
+            background-color: rgba(55, 65, 81, 0.5);
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+
+        .link-button:hover {
+            border-color: #34D399; /* Warna aksen hijau */
+            color: #34D399;
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.3);
+            transform: scale(1.03);
+        }
+
+        .profile-picture {
+            border: 3px solid #34D399;
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.4);
+        }
+
+        /* Efek kursor mengetik */
+        .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2rem;
+            background-color: #34D399;
+            animation: blink 1s step-end infinite;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent; }
+            50% { background-color: #34D399; }
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md mx-auto card-container rounded-2xl shadow-2xl p-6 md:p-8">
+
+            <!-- Bagian Profil -->
+            <div class="text-center">
+                <img src="https://placehold.co/150x150/0D1117/34D399?text=Foto" 
+                     alt="Foto Profil" 
+                     class="w-28 h-28 rounded-full mx-auto mb-4 profile-picture">
+                
+                <!-- Ganti nama Anda di sini -->
+                <h1 class="text-2xl font-bold text-white">Haykal Aulil Albab</h1>
+                
+                <!-- Ganti profesi atau status Anda di sini -->
+                <p class="text-md text-green-400 mt-1" id="role-text">Software Engineer<span class="typing-cursor"></span></p>
+                
+                 <!-- Ganti bio singkat Anda di sini -->
+                <p class="text-sm text-gray-400 mt-3 max-w-xs mx-auto">
+                    Membangun solusi digital dan gemar belajar teknologi baru.
+                </p>
+            </div>
+
+            <!-- Bagian Tombol Tautan -->
+            <div class="mt-8 space-y-4">
+                
+                <!-- Ganti '#' dengan URL LinkedIn Anda -->
+                <a href="https://www.linkedin.com/in/haykalaulilalbab/" target="_blank" class="link-button flex items-center justify-center w-full p-4 rounded-lg font-semibold">
+                    <i data-lucide="linkedin" class="w-5 h-5 mr-3"></i>
+                    LinkedIn
+                </a>
+
+                <!-- URL GitHub Anda -->
+                <a href="https://github.com/haykalaul" target="_blank" class="link-button flex items-center justify-center w-full p-4 rounded-lg font-semibold">
+                    <i data-lucide="github" class="w-5 h-5 mr-3"></i>
+                    GitHub
+                </a>
+
+                <!-- nomor WhatsApp Anda -->
+                <a href="https://wa.me/6282143745958" target="_blank" class="link-button flex items-center justify-center w-full p-4 rounded-lg font-semibold">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                    WhatsApp
+                </a>
+
+                <!-- URL Portofolio Anda -->
+                <a href="https://haykalaul.github.io/portofolio-web-haykalaul/" target="_blank" class="link-button flex items-center justify-center w-full p-4 rounded-lg font-semibold">
+                    <i data-lucide="briefcase" class="w-5 h-5 mr-3"></i>
+                    Portofolio
+                </a>
+
+            </div>
+            
+            <!-- Footer -->
+            <div class="text-center mt-8">
+                <p class="text-xs text-gray-500">@2025 Copyright by <span class="text-red-500">&hearts;</span> HaykalAulilAlbab</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Inisialisasi ikon Lucide
+        lucide.createIcons();
+
+        // (Opsional) Efek mengetik untuk profesi/status
+        const roles = ["Software Engineer", "IT Enthusiast", "Web Developer", "Problem Solver","Longlife Learner"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const roleTextElement = document.getElementById('role-text');
+        const cursorElement = roleTextElement.querySelector('.typing-cursor');
+
+        function type() {
+            const currentRole = roles[roleIndex];
+            let displayText = '';
+
+            if (isDeleting) {
+                displayText = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                displayText = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            roleTextElement.firstChild.textContent = displayText;
+
+            let typeSpeed = isDeleting ? 100 : 200;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2000; // Jeda setelah selesai mengetik
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500; // Jeda sebelum mulai mengetik kata baru
+            }
+            
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (roleTextElement) {
+                setTimeout(type, 1000); // Mulai efek setelah 1 detik
+            }
+        });
+    </script>
+</body>
+</html>
